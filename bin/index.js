@@ -2,6 +2,7 @@ var app = require('../app');
 var Twit = require('twit');
 var CronJob = require("cron").CronJob;
 var moment = require('moment');
+var request = require('request');
 
 // 認証情報の設定
 var T = new Twit({
@@ -34,17 +35,16 @@ var NARUTO_MESSAGE = ' NARUTO展最高だってばよ！ NARUTOの問題を集�
 var STARWARS_MESSAGE = ' STAR WARS展いいですね！ STAR WARSの問題を集めたアプリが公開されています！是非試してみてね！ https://goo.gl/Zod5Mb'
 var ONEPIECE_MESSAGE = ' ONE PIECEお好きなんですね！ ONE PIECEの問題を集めたアプリを作ったよ！是非挑戦してみてね！ https://goo.gl/gj6JgZ'
 
-listen(['ナルト展', 'NARUTO展'],
-function(tweet){ reply(tweet, NARUTO_MESSAGE); });
-listen(['スターウォーズ展', 'スター・ウォーズ展', 'STAR WARS展', 'STARWARS展', 'star wars展', 'starwars展', 'Star wars展', 'Star Wars展', 'Starwars展'],
-function(tweet){ reply(tweet, STARWARS_MESSAGE); });
-listen(['ウルージ', '今週のワンピ', 'ドンッ', 'クソお世話になりました', '人の夢は終わらね', 'まったくいい人生だった', '好き勝手やりなさる'],
-function(tweet){ reply(tweet, ONEPIECE_MESSAGE); });
+listen(['ナルト展', 'NARUTO展'], function(tweet){ reply(tweet, NARUTO_MESSAGE); });
+
+listen(['スターウォーズ展', 'スター・ウォーズ展', 'STAR WARS展', 'STARWARS展', 'star wars展', 'starwars展', 'Star wars展', 'Star Wars展', 'Starwars展'], function(tweet){ reply(tweet, STARWARS_MESSAGE); });
+
+listen(['ウルージ', '今週のワンピ', 'ドンッ', 'クソお世話になりました', '人の夢は終わらね', 'まったくいい人生だった', '好き勝手やりなさる'], function(tweet){ reply(tweet, ONEPIECE_MESSAGE); });
 
 
 
 // 漫画の問題をランダム取得するメソッド
-var getMangaQuestion = function(mangaId, cb) {
+function getMangaQuestion(mangaId, cb) {
   var QUESTIONS_URL = 'http://ec2-52-68-159-188.ap-northeast-1.compute.amazonaws.com/api/v1/questions/';
   request(QUESTIONS_URL+mangaId, function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -69,7 +69,7 @@ var getMangaQuestion = function(mangaId, cb) {
  */
 function tweet(message){
   T.post('statuses/update', { status: message }, function(err, data, response) {
-    console.log(message);
+    console.log('Tweet: %s', message);
   });
 }
 
@@ -92,8 +92,8 @@ function tweet(message){
  * @param callback キーワードを含むtweetが呟かれた際に実行される関数 引数に対象のtweetオブジェクトが渡される
  */
 function listen(keywords, callback) {
-  T.stream('statuses/filter', { track: keywords })
-    .on('tweet', function (tweet) { callback(tweet); });
+  var stream = T.stream('statuses/filter', { track: keywords });
+  stream.on('tweet', function (tweet) { callback(tweet); });
 }
 
 
@@ -107,7 +107,7 @@ function listen(keywords, callback) {
 function cron(cronJobSetting, callback) {
   return new CronJob({
     cronTime: cronJobSetting,
-    onTick: function () { callback();},
+    onTick: callback,
     start: true
   });
 }
