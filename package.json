@@ -1,0 +1,24 @@
+{
+  "name": "twitter_bot",
+  "version": "1.0.0",
+  "description": "twitterのbot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikazukittp/twitterBot.git"
+  },
+  "author": "HAIJIMA Kazuki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mikazukittp/twitterBot/issues"
+  },
+  "homepage": "https://github.com/Mikazukittp/twitterBot#readme",
+
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
