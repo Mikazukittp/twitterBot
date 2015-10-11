@@ -77,11 +77,11 @@ function tweet(message){
 /**
  * tweetに返信する関数
  *
- * @param tweet 返信対象のtweetオブジェクト
+ * @param twt 返信対象のtweetオブジェクト
  * @param message 返信内容
  */
- function reply(tweet, message) {
-   tweet('@'+tweet.user.screen_name+message);
+ function reply(twt, message) {
+   tweet('@'+twt.user.screen_name+message);
  }
 
 
@@ -93,7 +93,7 @@ function tweet(message){
  */
 function listen(keywords, callback) {
   var stream = T.stream('statuses/filter', { track: keywords });
-  stream.on('tweet', function (tweet) { callback(tweet); });
+  stream.on('tweet', function (twt) { callback(twt); });
 }
 
 
