@@ -31,15 +31,16 @@ cron('0 40 * * * *', getMangaQuestion(3, tweet));
  *
  **************************************/
 
+var NARUTO_KEYWORDS = ['ナルト展', 'NARUTO展'];
+var STARWARS_KEYWORDS = ['スターウォーズ展', 'スター・ウォーズ展', 'STAR WARS展', 'STARWARS展', 'star wars展', 'starwars展', 'Star wars展', 'Star Wars展', 'Starwars展'];
+var ONEPIECE_KEYWORDS = ['ウルージ', '今週のワンピ', 'ドンッ', 'クソお世話になりました', '人の夢は終わらね', 'まったくいい人生だった', '好き勝手やりなさる'];
 var NARUTO_MESSAGE = ' NARUTO展最高だってばよ！ NARUTOの問題を集めたアプリが公開されているよ！是非試してみてね！ https://goo.gl/IMMgq2'
 var STARWARS_MESSAGE = ' STAR WARS展いいですね！ STAR WARSの問題を集めたアプリが公開されています！是非試してみてね！ https://goo.gl/Zod5Mb'
 var ONEPIECE_MESSAGE = ' ONE PIECEお好きなんですね！ ONE PIECEの問題を集めたアプリを作ったよ！是非挑戦してみてね！ https://goo.gl/gj6JgZ'
 
-listen(['ナルト展', 'NARUTO展'], function(tweet){ reply(tweet, NARUTO_MESSAGE); });
-
-listen(['スターウォーズ展', 'スター・ウォーズ展', 'STAR WARS展', 'STARWARS展', 'star wars展', 'starwars展', 'Star wars展', 'Star Wars展', 'Starwars展'], function(tweet){ reply(tweet, STARWARS_MESSAGE); });
-
-listen(['ウルージ', '今週のワンピ', 'ドンッ', 'クソお世話になりました', '人の夢は終わらね', 'まったくいい人生だった', '好き勝手やりなさる'], function(tweet){ reply(tweet, ONEPIECE_MESSAGE); });
+listen(NARUTO_KEYWORDS, function(tweet){ reply(tweet, NARUTO_MESSAGE); });
+listen(STARWARS_KEYWORDS, function(tweet){ reply(tweet, STARWARS_MESSAGE); });
+listen(ONEPIECE_KEYWORDS, function(tweet){ reply(tweet, ONEPIECE_MESSAGE); });
 
 
 
