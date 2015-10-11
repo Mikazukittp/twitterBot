@@ -38,9 +38,9 @@ var NARUTO_MESSAGE = ' NARUTO展最高だってばよ！ NARUTOの問題を集�
 var STARWARS_MESSAGE = ' STAR WARS展いいですね！ STAR WARSの問題を集めたアプリが公開されています！是非試してみてね！ https://goo.gl/Zod5Mb'
 var ONEPIECE_MESSAGE = ' ONE PIECEお好きなんですね！ ONE PIECEの問題を集めたアプリを作ったよ！是非挑戦してみてね！ https://goo.gl/gj6JgZ'
 
-listen(NARUTO_KEYWORDS, function(tweet){ reply(tweet, NARUTO_MESSAGE); });
-listen(STARWARS_KEYWORDS, function(tweet){ reply(tweet, STARWARS_MESSAGE); });
-listen(ONEPIECE_KEYWORDS, function(tweet){ reply(tweet, ONEPIECE_MESSAGE); });
+listen(NARUTO_KEYWORDS, function(twt){ reply(twt, NARUTO_MESSAGE); });
+listen(STARWARS_KEYWORDS, function(twt){ reply(twt, STARWARS_MESSAGE); });
+listen(ONEPIECE_KEYWORDS, function(twt){ reply(twt, ONEPIECE_MESSAGE); });
 
 
 
