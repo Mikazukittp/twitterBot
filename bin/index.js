@@ -33,7 +33,7 @@ cron('0 40 * * * *', function(){ etMangaQuestion(3, tweet); });
 
 var NARUTO_KEYWORDS = ['ナルト展', 'NARUTO展'];
 var STARWARS_KEYWORDS = ['スターウォーズ展', 'スター・ウォーズ展', 'STAR WARS展', 'STARWARS展', 'star wars展', 'starwars展', 'Star wars展', 'Star Wars展', 'Starwars展'];
-var ONEPIECE_KEYWORDS = ['ウルージ', '今週のワンピ', 'ドンッ', 'クソお世話になりました', '人の夢は終わらね', 'まったくいい人生だった', '好き勝手やりなさる'];
+var ONEPIECE_KEYWORDS = ['ウルージ', '今週のワンピ', 'クソお世話になりました', '人の夢は終わらねぇ', 'まったくいい人生だった', '好き勝手やりなさる'];
 var NARUTO_MESSAGE = ' NARUTO展最高だってばよ！ NARUTOの問題を集めたアプリが公開されているよ！是非試してみてね！ https://goo.gl/IMMgq2 https://goo.gl/g020Pw'
 var STARWARS_MESSAGE = ' STAR WARS展いいですね！ STAR WARSの問題を集めたアプリが公開されています！是非試してみてね！ https://goo.gl/Zod5Mb https://goo.gl/AsF1lJ'
 var ONEPIECE_MESSAGE = ' ONE PIECEお好きなんですね！ ONE PIECEの問題を集めたアプリを作ったよ！是非挑戦してみてね！https://goo.gl/5ZecI3 https://goo.gl/gj6JgZ'
