@@ -21,7 +21,7 @@ var T = new Twit({
 // 毎時0分にNARUTO、20分にSTAR WARS、40分にONE PIECEの問題をランダムでつぶやく
 cron('0 0 * * * *', function(){ getMangaQuestion(1, tweet); });
 cron('0 20 * * * *', function(){ getMangaQuestion(2, tweet); });
-cron('0 40 * * * *', function(){ etMangaQuestion(3, tweet); });
+cron('0 40 * * * *', function(){ getMangaQuestion(3, tweet); });
 
 
 
